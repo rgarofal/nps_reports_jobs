@@ -11,6 +11,9 @@ class Mail(metaclass=abc.ABCMeta):
     """
 
     @abc.abstractmethod
+    def set_message(self, message, subject):
+        pass
+    @abc.abstractmethod
     def send_mail(self):
         pass
 
@@ -32,6 +35,12 @@ class ConcreteCreatorMailerNPS(Mail):
         def __init__(self, lista_email):
             self.lista_mail_to_send  = lista_email
             self.cur = None
+            self.subject = None
+            self.message = None
+
+        def set_message(self, message, subject):
+            self.message = message
+            self.subject = subject
 
         def send_mail(self):
             pass
