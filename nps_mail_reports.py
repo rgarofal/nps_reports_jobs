@@ -41,6 +41,11 @@ class ConcreteCreatorMailerNPS(Mail):
         def set_message(self, message, subject):
             self.message = message
             self.subject = subject
+            outlook = win32.Dispatch('outlook.application')
+            self.mail = outlook.CreateItem(0x0)
+            self.mail.To = self.lista_mail_to_send
+            self.mail.Subject = subject
+            self.mail.body = message
 
         def send_mail(self):
-            pass
+            self.mail.send

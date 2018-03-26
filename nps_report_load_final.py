@@ -29,3 +29,21 @@ if __name__ == '__main__':
     dao = ConcreteDatabaseMySQL()
     dao.connection()
     report.produce_reports_csv(dao)
+    lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'clara.scardicchio@fastweb.it', 'alessio.garbetta@fastweb.it']
+    import textwrap
+    file_1 = directory + '\\file_A'
+    file_2 =  directory + '\\file_A'
+    file_3 =  directory + '\\file_A'
+    decorator = """\
+                Ciao
+                Come d'accordo vi invio i seguenti report 
+                A = {0}
+                B = {1}
+                C = {2}
+                A disposizione
+                
+                Roberto
+                ****"""
+
+    message = textwrap.dedent(decorator.format(file_1, file_2, file_3))
+
