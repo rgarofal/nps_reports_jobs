@@ -35,15 +35,19 @@ if __name__ == '__main__':
     file_2 =  directory + '\\file_A'
     file_3 =  directory + '\\file_A'
     decorator = """\
-                Ciao
-                Come d'accordo vi invio i seguenti report 
-                A = {0}
-                B = {1}
-                C = {2}
+                Ciao a tutti
+
+                Come richiesto mando i seguenti report per la data odierna :
+
+                 1) base dati campione completo (report (1))
+                 2) base dati consolidato       (report (2))
+                 3) base dati cancellazioni     (report (3))
+
+
                 A disposizione
-                
+
                 Roberto
-                ****"""
+               """
 
     message = textwrap.dedent(decorator.format(file_1, file_2, file_3))
 
