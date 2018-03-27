@@ -47,5 +47,6 @@ class ConcreteCreatorMailerNPS(Mail):
             self.mail.Subject = subject
             self.mail.body = message
 
+
         def send_mail(self):
             self.mail.send
