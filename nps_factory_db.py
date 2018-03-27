@@ -177,7 +177,7 @@ class ConcreteBaseReportNPS(Report):
         report_conf = {
             'CANCELLAZIONI': 'SELECT distinct * FROM nps.assistenza_tecnica_report where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
                 'X', str(self.days_to_subtract)),
-            'COMPLETO': 'SELECT distinct * FROM nps.assistenza_tecnica_stage where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
+            'COMPLETO': 'SELECT distinct * FROM nps.ASSISTENZA_TECNICA_STAGE where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
                 'X', str(self.days_to_subtract)),
             'CONSOLIDATO': 'SELECT distinct * FROM nps.ASSISTENZA_TECNICA where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
                 'X', str(self.days_to_subtract))}
