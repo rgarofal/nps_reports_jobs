@@ -1,6 +1,7 @@
 import mysql.connector
 import psycopg2
 import pymysql
+import nps_zip_module
 from datetime import datetime, timedelta
 
 """
@@ -172,6 +173,8 @@ class ConcreteBaseReportNPS(Report):
         self.report_conf = dict()
         self.file_name_start = 'F_report_assistenza_tecnica_'
         self.days_to_subtract = interval_days
+        self. list_file = []
+        self.time_label = ''
         now = datetime.today() - timedelta(days=self.days_to_subtract)
 
         report_conf = {
@@ -185,14 +188,13 @@ class ConcreteBaseReportNPS(Report):
 
     def produce_reports_csv(self, dao):
         import csv
-        list_file = []
         now = datetime.today() - timedelta(days=self.days_to_subtract)
-        time_label = now.strftime("%d-%m-%Y")
+        self.time_label = now.strftime("%d-%m-%Y")
 
         for report_conf in self.report_items:
             report_file = '{}\{}_{}_{!s}.{}'.format(self.directory, self.file_name_start, report_conf[0], time_label,
                                                     'csv')
-            list_file.append(report_file)
+            self.list_file.append(report_file)
             # Select data from table using SQL query.
             result = dao.select(report_conf[1])
 
@@ -203,6 +205,9 @@ class ConcreteBaseReportNPS(Report):
             my_file.writerow(column_names)
             my_file.writerows(result)
             fp.close()
+
+    def produce_zip_report(self, nome_zip: str):
+        zip_dir(nome_zip, self.directory, self.time_label )
 
 
 class ConcreteBaseReportConfigurator(Creator):
