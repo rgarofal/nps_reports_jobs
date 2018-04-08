@@ -2,6 +2,7 @@ import mysql.connector
 from nps_factory_db import ConcreteDatabaseMySQL
 from nps_factory_db import ConcreteBaseReportNPS
 import argparse
+
 import csv
 from datetime import datetime, timedelta
 
