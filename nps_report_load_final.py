@@ -30,6 +30,7 @@ if __name__ == '__main__':
     dao = ConcreteDatabaseMySQL()
     dao.connection()
     report.produce_reports_csv(dao)
+    report.produce_zip_report('report_NPS_assistenza_tecnica.zip')
     lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'clara.scardicchio@fastweb.it', 'alessio.garbetta@fastweb.it']
     import textwrap
     file_1 = directory + '\\file_A'
