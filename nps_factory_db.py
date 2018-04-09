@@ -1,7 +1,7 @@
 import mysql.connector
 import psycopg2
 import pymysql
-import nps_zip_module
+from  nps_zip_module import zip_dir
 from datetime import datetime, timedelta
 
 """
