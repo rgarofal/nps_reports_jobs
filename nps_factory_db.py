@@ -213,7 +213,8 @@ class ConcreteBaseReportNPS(Report):
 
         nome_zip_file = '{}\{}_{!s}.{}'.format(self.directory, nome_zip,  self.time_label,
                                   'zip')
-        zip_dir(nome_zip_file, self.directory, self.time_label )
+        filtro_file = '{!s}.{}'.format(self.time_label,'csv')
+        zip_dir(nome_zip_file, self.directory, filtro_file )
 
 
 class ConcreteBaseReportConfigurator(Creator):
