@@ -180,7 +180,10 @@ class ConcreteBaseReportNPS(Report):
             'COMPLETO': 'SELECT distinct * FROM nps.ASSISTENZA_TECNICA_STAGE where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
                 'X', str(self.days_to_subtract)),
             'CONSOLIDATO': 'SELECT distinct * FROM nps.ASSISTENZA_TECNICA where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
-                'X', str(self.days_to_subtract))}
+                'X', str(self.days_to_subtract)),
+            'REP_CONSOLIDATO': 'SELECT distinct * FROM nps.REPORT_NPS_ASSTEC where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
+                'X', str(self.days_to_subtract))
+        }
         self.report_items = report_conf.items()
 
     def produce_reports_csv(self, dao):
