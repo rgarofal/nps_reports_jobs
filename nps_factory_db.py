@@ -195,7 +195,7 @@ class ConcreteBaseReportNPS(Report):
         self.time_label = now.strftime("%d-%m-%Y")
 
         for report_conf in self.report_items:
-            report_file = '{}\{}_{}_{!s}.{}'.format(self.directory, self.file_name_start, report_conf[0], time_label,
+            report_file = '{}\{}_{}_{!s}.{}'.format(self.directory, self.file_name_start, report_conf[0], self.time_label,
                                                     'csv')
             self.list_file.append(report_file)
             # Select data from table using SQL query.
