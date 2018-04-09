@@ -210,7 +210,10 @@ class ConcreteBaseReportNPS(Report):
             fp.close()
 
     def produce_zip_report(self, nome_zip: str):
-        zip_dir(nome_zip, self.directory, self.time_label )
+
+        nome_zip_file = '{}\{}_{!s}.{}'.format(self.directory, nome_zip,  self.time_label,
+                                  'zip')
+        zip_dir(nome_zip_file, self.directory, self.time_label )
 
 
 class ConcreteBaseReportConfigurator(Creator):
