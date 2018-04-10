@@ -1,8 +1,7 @@
 import mysql.connector
 import psycopg2
 import pymysql
-from nps_zip_module import zip_dir
-
+from  nps_zip_module import zip_dir
 from datetime import datetime, timedelta
 
 """
@@ -184,7 +183,10 @@ class ConcreteBaseReportNPS(Report):
             'COMPLETO': 'SELECT distinct * FROM nps.ASSISTENZA_TECNICA_STAGE where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
                 'X', str(self.days_to_subtract)),
             'CONSOLIDATO': 'SELECT distinct * FROM nps.ASSISTENZA_TECNICA where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
-                'X', str(self.days_to_subtract))}
+                'X', str(self.days_to_subtract)),
+            'REP_CONSOLIDATO': 'SELECT distinct * FROM nps.REPORT_NPS_ASSTEC where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
+                'X', str(self.days_to_subtract))
+        }
         self.report_items = report_conf.items()
 
     def produce_reports_csv(self, dao):
@@ -193,8 +195,7 @@ class ConcreteBaseReportNPS(Report):
         self.time_label = now.strftime("%d-%m-%Y")
 
         for report_conf in self.report_items:
-            report_file = '{}\{}_{}_{!s}.{}'.format(self.directory, self.file_name_start, report_conf[0],
-                                                    self.time_label,
+            report_file = '{}\{}_{}_{!s}.{}'.format(self.directory, self.file_name_start, report_conf[0], self.time_label,
                                                     'csv')
             self.list_file.append(report_file)
             # Select data from table using SQL query.
@@ -209,7 +210,11 @@ class ConcreteBaseReportNPS(Report):
             fp.close()
 
     def produce_zip_report(self, nome_zip: str):
-        zip_dir(nome_zip, self.directory, self.time_label )
+
+        nome_zip_file = '{}\{}_{!s}.{}'.format(self.directory, nome_zip,  self.time_label,
+                                  'zip')
+        filtro_file = '{}{!s}.{}'.format('*',self.time_label,'csv')
+        zip_dir(nome_zip_file, self.directory, filtro_file )
 
 
 class ConcreteBaseReportConfigurator(Creator):
