@@ -40,6 +40,7 @@ class ConcreteCreatorMailerNPS(Mail):
             self.cur = None
             self.subject = None
             self.message = None
+            self.mail = None
 
         def set_message(self, message: str, subject: str):
             self.message = message
@@ -53,8 +54,6 @@ class ConcreteCreatorMailerNPS(Mail):
 
         def set_attachment(self, zip_name: Union[str, PathLike]):
             self.mail.Attachments.Add(zip_name)
-
-
 
         def send_mail(self):
             self.mail.send
