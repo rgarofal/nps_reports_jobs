@@ -1,6 +1,7 @@
 import mysql.connector
 from nps_factory_db import ConcreteDatabaseMySQL
 from nps_factory_db import ConcreteBaseReportNPS
+from nps_mail_reports import ConcreteCreatorMailerNPS
 import argparse
 
 import csv
@@ -33,23 +34,23 @@ if __name__ == '__main__':
     report.produce_zip_report('report_NPS_assistenza_tecnica.zip')
     lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'clara.scardicchio@fastweb.it', 'alessio.garbetta@fastweb.it']
     import textwrap
-    file_1 = directory + '\\file_A'
-    file_2 =  directory + '\\file_A'
-    file_3 =  directory + '\\file_A'
     decorator = """\
                 Ciao a tutti
 
-                Come richiesto mando i seguenti report per la data odierna :
-
-                 1) base dati campione completo (report (1))
-                 2) base dati consolidato       (report (2))
-                 3) base dati cancellazioni     (report (3))
-
+                Come richiesto vi invio i reports in formato zip :
 
                 A disposizione
 
                 Roberto
                """
+    message = decorator
+    days_to_subtract = 0
+    now = datetime.today() - timedelta(days=days_to_subtract)
+    time_label = now.strftime("%d-%m-%Y")
+    subject = '{}{!s}{}'.format('Liste NPS_assistenza_tecnica ', time_label, ' -Caricamento coerente ')
 
-    message = textwrap.dedent(decorator.format(file_1, file_2, file_3))
-
+    #message = textwrap.dedent(decorator.format(file_1, file_2, file_3))
+    mail = ConcreteCreatorMailerNPS()
+    mail.set_message(message, subject)
+    nome_file_zip = report.get_file_name_zip()
+    mail.set_attachment(nome_file_zip)
