@@ -41,7 +41,7 @@ class ConcreteCreatorMailerNPS(Mail):
             self.subject = None
             self.message = None
 
-        def set_message(self, message: str, subject: str, zip_name: Union[str, PathLike]):
+        def set_message(self, message: str, subject: str):
             self.message = message
             self.subject = subject
             outlook = win32.Dispatch('outlook.application')
@@ -49,10 +49,10 @@ class ConcreteCreatorMailerNPS(Mail):
             self.mail.To = self.lista_mail_to_send
             self.mail.Subject = subject
             self.mail.HtmlBody = message
-            self.mail.Attachments.Add(zip_name)
             self.mail.Display(True)
 
-
+        def set_attachment(self, zip_name: Union[str, PathLike]):
+            self.mail.Attachments.Add(zip_name)
 
 
 
