@@ -175,6 +175,7 @@ class ConcreteBaseReportNPS(Report):
         self.days_to_subtract = interval_days
         self. list_file = []
         self.time_label = ''
+        self.zip_file_name = None
         now = datetime.today() - timedelta(days=self.days_to_subtract)
 
         report_conf = {
@@ -214,8 +215,11 @@ class ConcreteBaseReportNPS(Report):
         nome_zip_file = '{}\{}_{!s}.{}'.format(self.directory, nome_zip,  self.time_label,
                                   'zip')
         filtro_file = '{}{!s}.{}'.format('*',self.time_label,'csv')
+        self.zip_file_name = filtro_file
         zip_dir(nome_zip_file, self.directory, filtro_file )
 
+    def get_file_name_zip(self):
+        return self.zip_file_name
 
 class ConcreteBaseReportConfigurator(Creator):
     """
