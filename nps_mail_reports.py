@@ -2,6 +2,9 @@ import win32com.client as win32
 import psutil
 import os
 import subprocess
+from os import PathLike
+from typing import Union
+
 from nps_factory_db import Creator
 import abc
 
@@ -11,7 +14,7 @@ class Mail(metaclass=abc.ABCMeta):
     """
 
     @abc.abstractmethod
-    def set_message(self, message, subject):
+    def set_message(self, message, subject, zip_file):
         pass
     @abc.abstractmethod
     def send_mail(self):
@@ -38,14 +41,19 @@ class ConcreteCreatorMailerNPS(Mail):
             self.subject = None
             self.message = None
 
-        def set_message(self, message, subject):
+        def set_message(self, message: str, subject: str, zip_name: Union[str, PathLike]):
             self.message = message
             self.subject = subject
             outlook = win32.Dispatch('outlook.application')
             self.mail = outlook.CreateItem(0x0)
             self.mail.To = self.lista_mail_to_send
             self.mail.Subject = subject
-            self.mail.body = message
+            self.mail.HtmlBody = message
+            self.mail.Attachments.Add(zip_name)
+            self.mail.Display(True)
+
+
+
 
 
         def send_mail(self):
