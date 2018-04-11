@@ -32,7 +32,9 @@ if __name__ == '__main__':
     dao.connection()
     report.produce_reports_csv(dao)
     report.produce_zip_report('report_NPS_assistenza_tecnica.zip')
-    lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'clara.scardicchio@fastweb.it', 'alessio.garbetta@fastweb.it']
+    #lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'clara.scardicchio@fastweb.it', 'alessio.garbetta@fastweb.it']
+    lista_mail = ['roberto.garofalo@consulenti.fastweb.it']
+
     import textwrap
     decorator = """\
                 Ciao a tutti
@@ -50,7 +52,8 @@ if __name__ == '__main__':
     subject = '{}{!s}{}'.format('Liste NPS_assistenza_tecnica ', time_label, ' -Caricamento coerente ')
 
     #message = textwrap.dedent(decorator.format(file_1, file_2, file_3))
-    mail = ConcreteCreatorMailerNPS()
+    mail = ConcreteCreatorMailerNPS(lista_mail)
     mail.set_message(message, subject)
     nome_file_zip = report.get_file_name_zip()
     mail.set_attachment(nome_file_zip)
+    mail.send_mail()
