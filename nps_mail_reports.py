@@ -35,8 +35,8 @@ class ConcreteCreatorMailerNPS(Mail):
         Implement the Product interface.
         """
 
-        def __init__(self, lista_email):
-            self.lista_mail_to_send  = lista_email
+        def __init__(self, lista_email: list):
+            self.lista_mail_to_send  = ','.join(lista_email)
             self.cur = None
             self.subject = None
             self.message = None
@@ -50,7 +50,7 @@ class ConcreteCreatorMailerNPS(Mail):
             self.mail.To = self.lista_mail_to_send
             self.mail.Subject = subject
             self.mail.HtmlBody = message
-            self.mail.Display(True)
+            #self.mail.Display(True)
 
         def set_attachment(self, zip_name: Union[str, PathLike]):
             self.mail.Attachments.Add(zip_name)
