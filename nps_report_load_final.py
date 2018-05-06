@@ -39,7 +39,7 @@ if __name__ == '__main__':
     decorator = """\
                 Ciao a tutti
 
-                Come richiesto vi invio i reports in formato zip :
+                Come richiesto vi invio i reports in formato zip 
 
                 A disposizione
 
