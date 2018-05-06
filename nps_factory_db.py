@@ -215,7 +215,8 @@ class ConcreteBaseReportNPS(Report):
     def produce_zip_report(self, nome_zip: str):
         nome_zip_file = '{}\{}_{!s}.{}'.format(self.directory, nome_zip, self.time_label,
                                                'zip')
-        filtro_file = '{}{!s}.{}'.format('*', self.time_label, 'csv')
+        # filtro_file = '{}{!s}.{}'.format('*', self.time_label, 'csv')
+        filtro_file = '{!s}{!s}.{}'.format(self.file_name_start + '*', self.time_label, 'csv')
         self.zip_file_name = nome_zip_file
         zip_dir(nome_zip_file, self.directory, filtro_file)
 
@@ -274,7 +275,8 @@ class ConcreteBaseReportNPS_OCS_TECH(Report):
     def produce_zip_report(self, nome_zip: str):
         nome_zip_file = '{}\{}_{!s}.{}'.format(self.directory, nome_zip, self.time_label,
                                                'zip')
-        filtro_file = '{}{!s}.{}'.format('*', self.time_label, 'csv')
+        # filtro_file = '{}{!s}.{}'.format('*', self.time_label, 'csv')
+        filtro_file = '{!s}{!s}.{}'.format(self.file_name_start + '*', self.time_label, 'csv')
         self.zip_file_name = nome_zip_file
         zip_dir(nome_zip_file, self.directory, filtro_file)
 
@@ -333,7 +335,8 @@ class ConcreteBaseReportNPS_OCS_AMM(Report):
     def produce_zip_report(self, nome_zip: str):
         nome_zip_file = '{}\{}_{!s}.{}'.format(self.directory, nome_zip, self.time_label,
                                                'zip')
-        filtro_file = '{}{!s}.{}'.format('*', self.time_label, 'csv')
+        # filtro_file = '{}{!s}.{}'.format('*', self.time_label, 'csv')
+        filtro_file = '{!s}{!s}.{}'.format(self.file_name_start + '*', self.time_label, 'csv')
         self.zip_file_name = nome_zip_file
         zip_dir(nome_zip_file, self.directory, filtro_file)
 
