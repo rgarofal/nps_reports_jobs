@@ -36,7 +36,7 @@ class ConcreteCreatorMailerNPS(Mail):
         """
 
         def __init__(self, lista_email: list):
-            self.lista_mail_to_send  = ','.join(lista_email)
+            self.lista_mail_to_send  = ';'.join(lista_email)
             self.cur = None
             self.subject = None
             self.message = None
