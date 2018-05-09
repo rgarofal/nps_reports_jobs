@@ -53,13 +53,13 @@ if __name__ == '__main__':
     dao.connection()
     report.produce_reports_csv(dao)
     report.produce_zip_report('report_NPS_assistenza_tecnica.zip')
-    #lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'alessio.garbetta@fastweb.it']
-    lista_mail = ['roberto.garofalo@consulenti.fastweb.it','roberto.garofalo@spindox.it']
+    lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'alessio.garbetta@fastweb.it']
+    # lista_mail = ['roberto.garofalo@consulenti.fastweb.it','roberto.garofalo@spindox.it']
 
 
     subject = '{}{!s}{}'.format('Liste NPS_assistenza_tecnica ', time_label, ' -Caricamento coerente ')
 
-    #message = textwrap.dedent(decorator.format(file_1, file_2, file_3))
+    # message = textwrap.dedent(decorator.format(file_1, file_2, file_3))
     mail = ConcreteCreatorMailerNPS(lista_mail)
     mail.set_message(message, subject)
     nome_file_zip = report.get_file_name_zip()
@@ -72,8 +72,8 @@ if __name__ == '__main__':
     dao.connection()
     report.produce_reports_csv(dao)
     report.produce_zip_report('report_NPS_OCS_assistenza_tecnica.zip')
-    # lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'clara.scardicchio@fastweb.it', 'alessio.garbetta@fastweb.it']
-    lista_mail = ['roberto.garofalo@consulenti.fastweb.it', 'roberto.garofalo@spindox.it']
+    lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'alessio.garbetta@fastweb.it']
+    # lista_mail = ['roberto.garofalo@consulenti.fastweb.it', 'roberto.garofalo@spindox.it']
 
     subject = '{}{!s}{}'.format('Liste NPS_Single Contact assistenza_tecnica ', time_label, ' -Caricamento coerente ')
 
@@ -91,8 +91,8 @@ if __name__ == '__main__':
     dao.connection()
     report.produce_reports_csv(dao)
     report.produce_zip_report('report_NPS_OCS_amministrativa.zip')
-    # lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'vincenzo.fioretti@fastweb.it', 'clara.scardicchio@fastweb.it', 'alessio.garbetta@fastweb.it']
-    lista_mail = ['roberto.garofalo@consulenti.fastweb.it','roberto.garofalo@spindox.it']
+    lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'roberto.garofalo@spindox.it', 'arduino.panaro@fastweb.it', 'romana.mastrandrea@fastweb.it']
+    # lista_mail = ['roberto.garofalo@consulenti.fastweb.it','roberto.garofalo@spindox.it']
 
     subject = '{}{!s}{}'.format('Liste NPS_Single Contact Amministrativa ', time_label, ' -Caricamento coerente ')
 
