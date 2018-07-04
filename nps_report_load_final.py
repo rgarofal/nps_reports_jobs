@@ -98,6 +98,29 @@ if __name__ == '__main__':
        nome_file_zip = report.get_file_name_zip()
        mail.set_attachment(nome_file_zip)
        mail.send_mail()
+
+    #
+    if tipo_report == 'OMBOARDING' :
+       # REPORT ASSISTENZA SINGLE CONTACT TECNICA
+       report = ConcreteBaseReportNPS_ONBOARDING(directory, 0)
+       dao = ConcreteDatabaseMySQL()
+       dao.connection()
+       report.produce_reports_csv(dao)
+       report.produce_zip_report('report_ONBOARDING_tecnica.zip')
+       if test == 'FALSE':
+          lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'riccardo.scannapieco@fastweb.it']
+       else:
+          lista_mail = ['roberto.garofalo@consulenti.fastweb.it', 'roberto.garofalo@spindox.it']
+
+       subject = '{}{!s}{}'.format('Liste ONBOARDING nuovo ', time_label, ' -Caricamento coerente ')
+
+       # message = textwrap.dedent(decorator.format(file_1, file_2, file_3))
+       mail = ConcreteCreatorMailerNPS(lista_mail)
+       mail.set_message(message, subject)
+       nome_file_zip = report.get_file_name_zip()
+       mail.set_attachment(nome_file_zip)
+       mail.send_mail()
+    #
     if tipo_report == 'OCS_AMM' or tipo_report == 'TUTTI':
 
        # REPORT AMMINISTRATIVA SINGLE CONTACT
