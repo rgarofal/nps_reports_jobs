@@ -283,6 +283,67 @@ class ConcreteBaseReportNPS_OCS_TECH(Report):
     def get_file_name_zip(self):
         return self.zip_file_name
 
+#
+class ConcreteBaseReportNPS_ONBOARDING(Report):
+    """
+    Implement the Report interface.
+    """
+
+    def __init__(self, directory_log, interval_days=0):
+        self.directory = directory_log
+        self.report_conf = dict()
+        self.file_name_start = 'F_report_onboarding_'
+        self.days_to_subtract = interval_days
+        self.list_file = []
+        self.time_label = ''
+        self.zip_file_name = None
+        now = datetime.today() - timedelta(days=self.days_to_subtract)
+
+        report_conf = {
+            'CANCELLAZIONI': 'SELECT distinct * FROM nps.onboarding_n_report where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
+                'X', str(self.days_to_subtract)),
+            'COMPLETO': 'SELECT distinct * FROM nps.onboarding_n_stage where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
+                'X', str(self.days_to_subtract)),
+            'CONSOLIDATO': 'SELECT distinct * FROM nps.onboarding_n where date(data_insert_rco) = current_date() - INTERVAL X DAY'.replace(
+                'X', str(self.days_to_subtract))
+        }
+        self.report_items = report_conf.items()
+
+    def produce_reports_csv(self, dao):
+        import csv
+        now = datetime.today() - timedelta(days=self.days_to_subtract)
+        self.time_label = now.strftime("%d-%m-%Y")
+
+        for report_conf in self.report_items:
+            report_file = '{}\{}_{}_{!s}.{}'.format(self.directory, self.file_name_start, report_conf[0],
+                                                    self.time_label,
+                                                    'csv')
+            self.list_file.append(report_file)
+            # Select data from table using SQL query.
+            result = dao.select(report_conf[1])
+
+            # Getting Field Header names
+            column_names = [i[0] for i in dao.get_columns()]
+            fp = open(report_file, 'w+')
+            my_file = csv.writer(fp, lineterminator='\n', delimiter=';', )  # use lineterminator for windows
+            my_file.writerow(column_names)
+            my_file.writerows(result)
+            fp.close()
+
+    def produce_zip_report(self, nome_zip: str):
+        nome_zip_file = '{}\{}_{!s}.{}'.format(self.directory, nome_zip, self.time_label,
+                                               'zip')
+        # filtro_file = '{}{!s}.{}'.format('*', self.time_label, 'csv')
+        filtro_file = '{!s}{!s}.{}'.format(self.file_name_start + '*', self.time_label, 'csv')
+        self.zip_file_name = nome_zip_file
+        zip_dir(nome_zip_file, self.directory, filtro_file)
+
+    def get_file_name_zip(self):
+        return self.zip_file_name
+
+
+
+#
 
 class ConcreteBaseReportNPS_OCS_AMM(Report):
     """
