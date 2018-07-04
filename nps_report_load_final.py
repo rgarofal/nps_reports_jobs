@@ -3,6 +3,7 @@ from nps_factory_db import ConcreteDatabaseMySQL
 from nps_factory_db import ConcreteBaseReportNPS
 from nps_factory_db import ConcreteBaseReportNPS_OCS_AMM
 from nps_factory_db import ConcreteBaseReportNPS_OCS_TECH
+from nps_factory_db import ConcreteBaseReportNPS_ONBOARDING
 from nps_mail_reports import ConcreteCreatorMailerNPS
 import argparse
 
@@ -100,7 +101,7 @@ if __name__ == '__main__':
        mail.send_mail()
 
     #
-    if tipo_report == 'OMBOARDING' :
+    if tipo_report == 'ONBOARDING' :
        # REPORT ASSISTENZA SINGLE CONTACT TECNICA
        report = ConcreteBaseReportNPS_ONBOARDING(directory, 0)
        dao = ConcreteDatabaseMySQL()
