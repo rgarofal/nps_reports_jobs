@@ -36,7 +36,9 @@ if __name__ == '__main__':
     directory = args.directory_report
     tipo_report = args.report
     test = args.test_mail
-    print(directory)
+    print("Directory report = ", directory)
+    print("Flusso selezionato = ", tipo_report )
+    print()
 
     # import textwrap
     #
