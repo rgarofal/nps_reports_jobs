@@ -109,7 +109,7 @@ if __name__ == '__main__':
        dao = ConcreteDatabaseMySQL()
        dao.connection()
        report.produce_reports_csv(dao)
-       report.produce_zip_report('report_ONBOARDING_tecnica.zip')
+       report.produce_zip_report('report_ONBOARDING_new.zip')
        if test == 'FALSE':
           lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'riccardo.scannapieco@fastweb.it']
        else:
