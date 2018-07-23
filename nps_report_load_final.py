@@ -111,7 +111,7 @@ if __name__ == '__main__':
        report.produce_reports_csv(dao)
        report.produce_zip_report('report_ONBOARDING_new.zip')
        if test == 'FALSE':
-          lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'riccardo.scannapieco@fastweb.it']
+          lista_mail = ['giovanni.laforgia@fastweb.it', 'roberto.garofalo@consulenti.fastweb.it', 'giovanni.galgano@fastweb.it', 'riccardo.scannapieco@fastweb.it', 'laura.mango@fastweb.it']
        else:
           lista_mail = ['roberto.garofalo@consulenti.fastweb.it', 'roberto.garofalo@spindox.it']
 
