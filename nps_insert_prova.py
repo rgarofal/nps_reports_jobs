@@ -72,14 +72,10 @@ if __name__ == '__main__':
         for yy in range (1, 4):
             for num in range(1,1000):
                 #statement = 'insert into {1} ({2}) values ({3}, ''username_{4}'', ''surname_{5}'', date(now() - interval {6} year),date(now()), 12, 13)',format(table,colonne ,i, num, num, yy)
-
-
-
-                stat_head = ()
                 statement =("INSERT INTO trb2 "
                  "(id, fname, lname, hired,separated,job_code, store_id) "
                  "VALUES (%s, %s, %s, %s, %s, %s, %s)")
-                data  =  '(%s, ''username_%s'', ''surname_%s'', date(now() - interval %s year),date(now()), 12, 13)' %(table, colonne, i, num, num, yy)
+                data  =  '(%s, ''username_%s'', ''surname_%s'', date(now() - interval %s year),date(now()), 12, 13)' %(  i, num, num, yy)
                 print(statement)
                 #dao.insert(statement)
                 cursor.execute(statement, data)
