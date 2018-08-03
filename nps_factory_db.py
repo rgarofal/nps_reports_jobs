@@ -84,6 +84,10 @@ class Database(metaclass=abc.ABCMeta):
     def update(self, statement):
         pass
 
+    @abc.abstractmethod
+    def insert(self, statement):
+        pass
+
 
 class ConcreteDatabaseMySQL(Database):
     """
