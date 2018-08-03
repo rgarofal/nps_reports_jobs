@@ -56,6 +56,7 @@ if __name__ == '__main__':
     time_label = now.strftime("%d-%m-%Y")
 
     dao = ConcreteDatabaseMySQL()
+    dao.connection()
 # insert into trb2 (id, fname, lname, hired,separated,job_code, store_id) values (2,'pippo3', 'pluto3', date(now() - interval 2 year), date(now()), 12, 13);
     for i in range(1,4000):
         for yy in range (1, 4):
