@@ -62,7 +62,7 @@ if __name__ == '__main__':
     passwd = "R0garof4lo",  # password
     db = "nps"
 
-    cnx = mysql.connector.connect(user='scott', database='employees')
+    cnx = mysql.connector.connect(host=host,user=user, passwd= passwd, database=db)
     cursor = cnx.cursor()
 
     #dao = ConcreteDatabaseMySQL()
