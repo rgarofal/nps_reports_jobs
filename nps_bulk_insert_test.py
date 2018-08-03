@@ -60,5 +60,7 @@ if __name__ == '__main__':
     for i in range(1,4000):
         for yy in range (1, 4):
             for num in range(1,1000):
-                statement = 'insert into {1} ({2}) values ({3}, ''username_{4}'', ''surname_{5}'', date(now() - interval {6} year),date(now()), 12, 13)',format(table,colonne ,i, num, num, yy)
+                #statement = 'insert into {1} ({2}) values ({3}, ''username_{4}'', ''surname_{5}'', date(now() - interval {6} year),date(now()), 12, 13)',format(table,colonne ,i, num, num, yy)
+                statement = 'insert into %s %s) values (%s, ''username_%s'', ''surname_%s'', date(now() - interval %s year),date(now()), 12, 13)' %(table, colonne, i, num, num, yy)
+                print(statement)
                 dao.insert(statement)
