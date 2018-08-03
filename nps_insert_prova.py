@@ -76,9 +76,10 @@ if __name__ == '__main__':
                  "(id, fname, lname, hired,separated,job_code, store_id) "
                  "VALUES (%s, %s, %s, %s, %s, %s, %s)")
                 data  =  '(%s, ''username_%s'', ''surname_%s'', date(now() - interval %s year),date(now()), 12, 13)' %(  i, num, num, yy)
+                print(data)
                 print(statement)
                 #dao.insert(statement)
-                cursor.execute(statement, data)
+                cursor.execute(statement, (data))
     cnx.commit()
 
     cursor.close()
