@@ -57,12 +57,12 @@ if __name__ == '__main__':
     now = datetime.today() - timedelta(days=days_to_subtract)
     time_label = now.strftime("%d-%m-%Y")
 
-    host = "db801rco.intranet.fw",  # your host
-    user = "rogarofalo",  # username
-    passwd = "R0garof4lo",  # password
-    db = "nps"
+    host_n = "db801rco.intranet.fw"  # your host
+    user_n = "rogarofalo"  # username
+    passwd_n = "R0garof4lo" # password
+    db_n = "nps"
 
-    cnx = mysql.connector.connect(host=host,user=user, password= passwd, database=db)
+    cnx = mysql.connector.connect(host=host_n,user=user_n, password= passwd_n, database=db_n)
     cursor = cnx.cursor()
 
     #dao = ConcreteDatabaseMySQL()
