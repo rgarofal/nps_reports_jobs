@@ -119,6 +119,9 @@ class ConcreteDatabaseMySQL(Database):
     def update(self, statement):
         pass
 
+    def insert(self, statement):
+        self.cur.execute(statement)
+
 
 class ConcreteDatabasePostSQL(Database):
     """
