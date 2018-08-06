@@ -75,11 +75,11 @@ if __name__ == '__main__':
                 statement =("INSERT INTO trb2 "
                  "(id, fname, lname, hired, separated, job_code, store_id) "
                  "VALUES ( %s, %s, %s, %s, %s, %s, %s );")
-                data  =  '(%s, username_%s, surname_%s, date(now() - interval %s year),date(now()), 12, 13)' %(i, num, num, yy)
+                data  =  '(%s, ''username_%s'', ''surname_%s'', date(now() - interval %s year),date(now()), 12, 13)' %(i, num, num, yy)
                 print(data)
-                print(statement)
+                #print(statement)
                 #dao.insert(statement)
-                statement_finale = 'INSERT INTO trb2 (id, fname, lname, hired, separated, job_code, store_id) VALUES %s' & (data)
+                statement_finale = 'INSERT INTO trb2 (id, fname, lname, hired, separated, job_code, store_id) VALUES ' + data
                 print(statement_finale)
                 #cursor.execute(statement, data)
                 cursor.execute(statement_finale)
