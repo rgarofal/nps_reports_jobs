@@ -68,7 +68,7 @@ if __name__ == '__main__':
     #dao = ConcreteDatabaseMySQL()
     #dao.connection()
 # insert into trb2 (id, fname, lname, hired,separated,job_code, store_id) values (2,'pippo3', 'pluto3', date(now() - interval 2 year), date(now()), 12, 13);
-    for i in range(1,4000):
+    for i in range(1,100):
         for yy in range (1, 4):
             for num in range(1,1000):
                 #statement = 'insert into {1} ({2}) values ({3}, ''username_{4}'', ''surname_{5}'', date(now() - interval {6} year),date(now()), 12, 13)',format(table,colonne ,i, num, num, yy)
