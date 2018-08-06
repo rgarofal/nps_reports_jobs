@@ -74,12 +74,15 @@ if __name__ == '__main__':
                 #statement = 'insert into {1} ({2}) values ({3}, ''username_{4}'', ''surname_{5}'', date(now() - interval {6} year),date(now()), 12, 13)',format(table,colonne ,i, num, num, yy)
                 statement =("INSERT INTO trb2 "
                  "(id, fname, lname, hired, separated, job_code, store_id) "
-                 "VALUES (%s, %s, %s, %s, %s, %s, %s)")
-                data  =  '(%s, username_%s, surname_%s, date(now() - interval %s year),date(now()), 12, 13)' %(  i, num, num, yy)
+                 "VALUES ( %s, %s, %s, %s, %s, %s, %s );")
+                data  =  '(%s, username_%s, surname_%s, date(now() - interval %s year),date(now()), 12, 13)' %(i, num, num, yy)
                 print(data)
                 print(statement)
                 #dao.insert(statement)
-                cursor.execute(statement, (data))
+                statement_finale = 'INSERT INTO trb2 (id, fname, lname, hired, separated, job_code, store_id) VALUES %s' & (data)
+                print(statement_finale)
+                #cursor.execute(statement, data)
+                cursor.execute(statement_finale)
     cnx.commit()
 
     cursor.close()
