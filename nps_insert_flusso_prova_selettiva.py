@@ -5,7 +5,14 @@ import argparse
 
 import csv
 from datetime import datetime, timedelta
-
+#
+#CREATE TABLE `part_trial` (
+#  `ACC_ID` varchar(11) DEFAULT NULL,
+#  `FLUSSO` varchar(45) DEFAULT NULL
+#) ENGINE=MyISAM DEFAULT CHARSET=latin1
+#/*!50100 PARTITION BY KEY (FLUSSO)
+#PARTITIONS 8 */;
+#
 
 def help_msg():
     """ help to describe the script"""
